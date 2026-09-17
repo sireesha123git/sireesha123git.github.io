@@ -1,7 +1,7 @@
 // Add verified public URLs here. Empty entries show honest status text.
 const projectLinks = {
   clinic: 'https://sites.google.com/view/vamsee-dentalcare-tirupati/home',
-  meal: '',
+  meal: 'https://family-table-planner.sireesha-n-1.chatgpt.site/',
   youtube: 'https://www.youtube.com/channel/UCgRG2UON1a0xQA0h27qjoWg',
   github: 'https://github.com/sireesha123git?tab=repositories'
 };
