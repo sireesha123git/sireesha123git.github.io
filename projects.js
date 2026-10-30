@@ -2,10 +2,10 @@
 const projectLinks = {
   clinic: 'https://sites.google.com/view/vamsee-dentalcare-tirupati/home',
   meal: 'https://family-table-planner.sireesha-n-1.chatgpt.site/',
-  youtube: 'https://www.youtube.com/channel/UCgRG2UON1a0xQA0h27qjoWg',
+  youtube: 'https://sireesha123git.github.io/kaustubam-productions/',
   github: 'https://github.com/sireesha123git?tab=repositories'
 };
-const projectLabels = {clinic:'Visit clinic website ↗',meal:'Explore the meal planner ↗',youtube:'Watch on YouTube ↗',github:'Explore my GitHub ↗'};
+const projectLabels = {clinic:'Visit clinic website ↗',meal:'Explore the meal planner ↗',youtube:'Step into KP-WOW ↗',github:'Explore my GitHub ↗'};
 Object.entries(projectLinks).forEach(([key, url]) => {
   if (!url) return;
   try {
