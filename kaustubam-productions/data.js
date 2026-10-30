@@ -11,7 +11,7 @@ const SHORTS  = CHANNEL + "/shorts";
 /* Social links shown as round icons in the top bar. Leave "" to hide an icon. */
 const SOCIAL = {
   youtube:   CHANNEL,
-  linkedin:  "https://www.linkedin.com/company/146894652/",
+  linkedin:  "https://www.linkedin.com/company/kaustubamproductions/",
   instagram:"https://www.instagram.com/kaustubamproductions/"
 };
 
