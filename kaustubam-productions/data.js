@@ -73,4 +73,4 @@ const PAY={
 };
 
 /* Contact form delivery. Paste the Web3Forms access key (emailed to kaustubamproductions@gmail.com from web3forms.com). Empty = FormSubmit. */
-const CONTACT={web3formsKey:""};
+const CONTACT={web3formsKey:"db186d22-d400-42ad-8820-6231a96d13b8"};
