@@ -71,3 +71,6 @@ const PAY={
   bank:{accountName:"",accountNumber:"",ifsc:"",bankName:"",branch:""},
   showBankDetails:false    // true = show bank account on the page; false = "email us for bank details"
 };
+
+/* Contact form delivery. Paste the Web3Forms access key (emailed to kaustubamproductions@gmail.com from web3forms.com). Empty = FormSubmit. */
+const CONTACT={web3formsKey:""};

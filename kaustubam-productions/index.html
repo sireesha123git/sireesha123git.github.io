@@ -834,15 +834,26 @@ function wireForm(){
     if(!live){st.className="status";st.textContent=t("m_preview");return;}
     btn.disabled=true;st.textContent=t("m_sending");
     const topic=f.querySelector("#fb-topic").value;
-    /* Standard form post (no cross-site fetch): FormSubmit sends the mail, then returns the visitor here with ?sent=1 */
+    /* Send: Web3Forms when a key is set (reliable, CORS-friendly), else FormSubmit. If both fail, offer a ready-made email. */
+    const name=f.querySelector("#fb-name").value.trim()||"(not given)",body=msg.value.trim();
+    const C=(typeof CONTACT!=="undefined")?CONTACT:{};
     try{
-      const back=location.origin+location.pathname+"?sent="+encodeURIComponent(mail)+"#talk";
-      const fields={name:f.querySelector("#fb-name").value.trim()||"(not given)",email:mail,topic,language:LANG,message:msg.value.trim(),
-        _subject:"KP-WOW website: "+topic,_replyto:mail,_template:"table",_captcha:"false",_next:back};
-      const post=document.createElement("form");post.method="POST";post.action="https://formsubmit.co/"+INBOX;post.style.display="none";
-      for(const k in fields){const i=document.createElement("input");i.type="hidden";i.name=k;i.value=fields[k];post.appendChild(i);}
-      document.body.appendChild(post);post.submit();
-    }catch(err){st.className="status bad";st.textContent=t("m_fail",{mail:INBOX});btn.disabled=false;}
+      let ok=false;
+      if(C.web3formsKey){
+        const res=await fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
+          body:JSON.stringify({access_key:C.web3formsKey,subject:"KP-WOW website: "+topic,from_name:"KP-WOW website",name,email:mail,replyto:mail,topic,language:LANG,message:body,botcheck:""})});
+        const d=await res.json().catch(()=>({}));ok=res.ok&&d.success===true;
+      } else {
+        const res=await fetch("https://formsubmit.co/ajax/"+INBOX,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
+          body:JSON.stringify({name,email:mail,topic,language:LANG,message:body,_subject:"KP-WOW website: "+topic,_replyto:mail,_template:"table",_captcha:"false"})});
+        const d=await res.json().catch(()=>({}));ok=res.ok&&String(d.success)!=="false";
+      }
+      if(!ok) throw new Error("send failed");
+      f.reset();st.className="status ok";st.textContent=t("m_sent",{mail});
+    }catch(err){
+      const href="mailto:"+INBOX+"?subject="+encodeURIComponent("KP-WOW website: "+topic)+"&body="+encodeURIComponent(body+"\n\n"+name+" <"+mail+">");
+      st.className="status bad";st.innerHTML=esc(t("m_fail",{mail:INBOX}))+` <a href="${esc(href)}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">${esc(t("pay_mail_btn"))} ↗</a>`;
+    } finally{btn.disabled=false;}
   });
 }
 (function(){const box=document.getElementById("social"),S=(typeof SOCIAL!=="undefined")?SOCIAL:{};
