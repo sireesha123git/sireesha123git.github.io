@@ -6,3 +6,19 @@
 .bottom-contact{border-top:1px solid var(--line);padding:25px 0 35px;display:flex;align-items:center;justify-content:center;gap:25px;flex-wrap:wrap}.bottom-contact h2{font:600 15px Manrope,sans-serif;letter-spacing:0}.bottom-contact a{font-size:14px;text-decoration:underline;text-underline-offset:4px}@media(max-width:680px){.bottom-contact{flex-direction:column;gap:10px}}
 :root .project-art.orchard{background:#214e41;color:#e4edce;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}.orchard svg{width:min(90%,320px);height:180px}.orchard small{font-size:9px;letter-spacing:1.5px}.orchard-links{display:flex;flex-wrap:wrap;gap:12px 22px;margin-top:18px}.project-body .project-note{font-size:12px;margin-top:14px}
 :root .orchard .art-pill{display:none}#orchard-project{grid-column:1/-1;display:grid;grid-template-columns:1fr 2fr}#orchard-project .project-art{height:100%;min-height:250px}#orchard-project .project-body{padding:30px}@media(max-width:680px){#orchard-project{grid-template-columns:1fr}#orchard-project .project-art{min-height:220px}#orchard-project .project-body{padding:20px}}
+
+/* 13 Nov 2026: three equal boxes in "Curiosity, put into practice" */
+#orchard-project{grid-column:auto;display:flex;flex-direction:column}
+.project{display:flex;flex-direction:column}
+.project-body{display:flex;flex-direction:column;flex:1}
+:root .project-art,#orchard-project .project-art{height:220px;min-height:0;flex:none}
+.project-art.home{background:#e9e6d6;color:#6a6a48;gap:10px}
+.project-art.home svg{width:min(90%,320px);height:170px}
+.project-art.home small,.project-art.video small{font-size:9px;letter-spacing:1.5px}
+#orchard-project .project-body{padding:25px}
+.project-links{display:flex;flex-wrap:wrap;gap:12px 22px;margin-top:auto;padding-top:6px}
+.mini-projects{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.mini-projects li{border-top:1px solid #dae0d1;padding-top:14px;display:flex;flex-direction:column;align-items:flex-start;gap:7px}
+.mini-projects strong{font:600 14px Manrope,sans-serif}
+.mini-projects span:not(.project-link){font-size:13px}
+@media(max-width:680px){#orchard-project .project-body{padding:20px}}
